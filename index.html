@@ -178,9 +178,11 @@
                         <a href="https://my.cctip.io/token/details/6/TDLWTM3odkzSPd8XG9Vrh7zsMus81qXxTb" class="btn know_btn">CCTip</a>
                         <a href="https://tronscan.io/#/token20/TDLWTM3odkzSPd8XG9Vrh7zsMus81qXxTb" class="btn know_btn">Tronscan</a>
                     </div>
-                    <div class="col-md-4 hidden-sm hidden-xs">
-                        <div class="about-image text-center">
-                            <img src="./images/ASP.jpg" alt="">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div id="token-supply" style="height: 350px;"></div>
                         </div>
                     </div>
                 </div>
@@ -247,6 +249,39 @@
         </div>
     </section><!-- Portfolio end -->
 
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <h2>OUR LATEST ANNOUNCEMENT</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service_item">
+                        <img src="images/ann/voting.png" alt="" />
+                        <h3>EARN ASP BY VOTING ON AROWEX</h3>
+                        <p>By voting ASP on <a href="http://arowex.com/#/voting" target="_blank" rel="noopener noreferrer">Arowex</a> and send your screenshot to <a href="http://t.me/aspvoting" target="_blank" rel="noopener noreferrer">ASP Voting Group</a>, you'll get ASP for it.</p>
+                        <a href="https://t.me/aspchannel/185" class="btn know_btn">know more</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service_item">
+                        <img src="images/ann/presale.png" alt="" />
+                        <h3>PRESALE ROUND 1 STARTED</h3>
+                        <p>Presale Round 1 started at 7 December. Buy ASP with Cheapest price before Ended at 25 December. Presale Fisrt Round 1 price is 20 TRX / 10 ASP, ASP target price is $5/ASP. Buy Only from <a href="http://t.me/hiddendeveloper" target="_blank" rel="noopener noreferrer">@hiddendeveloper</a></p>
+                        <a href="https://t.me/asptimes/14" class="btn know_btn">know more</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service_item">
+                        <img src="images/ann/bitwired.png" alt="" />
+                        <h3>BITWIRED LISTING</h3>
+                        <p>We will list ASP(ASP) on our exchange on 1 January 2021. The following trading pair will be available: ASP/USDT and ASP/BTC.</p>
+                        <a href="https://bitwiredhelp.zendesk.com/hc/en-us/articles/360002241415-Bitwired-will-list-ASP-ASP-" class="btn know_btn">know more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- Services end -->
+
     <section id="why_us">
         <div class="container text-center">
             <div class="row">
@@ -293,6 +328,9 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.resize.min.js"></script>
 
     <script type="text/javascript">
     	$(document).ready( function() {
@@ -303,8 +341,33 @@
 		        responsive: { 
 		            0: { items: 2 }, 768: { items: 4 }, 900: { items: 6 }
 		        }
-		    });
-    	});
+            });
+            var data = [
+                {label: "Initial Community", data:35},
+                {label: "Content Creators", data: 20},
+                {label: "Development Team & Staff", data: 10},
+                {label: "Marketing", data: 5},
+                {label: "Airdrop", data: 5},
+                {label: "Burning", data: 25, color: 'orange'},
+            ];
+            var options = {
+                    series: {
+                        pie: {
+                            show: true,
+                            label: {
+                                show: true,
+                                formatter: function(label,point){
+                                    return(point.percent.toFixed(0) + '%');
+                                }
+                            }
+                        },
+                        legend: {
+                            show: false,
+                        }
+                    }
+                };
+            $.plot($("#token-supply"), data, options);  
+        });
     </script>
 
 </body>
